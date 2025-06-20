@@ -209,8 +209,15 @@ cat > /etc/logrotate.d/sts-ai << 'EOF'
 EOF
 
 # 13. Instalar Certbot para SSL (opcional)
-log "Instalando Certbot..."
-yum install -y certbot python3-certbot-nginx
+log "Instalando Certbot via Snap..."
+yum install -y snapd
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap
+snap install core
+snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+log "✅ Certbot instalado correctamente via Snap"
 
 # 14. Mostrar información final
 log "✅ Configuración del VPS completada!"

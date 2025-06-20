@@ -44,8 +44,7 @@ fi
 
 # 2. Verificar que Certbot esté instalado
 if ! command -v certbot &> /dev/null; then
-    log "Instalando Certbot..."
-    yum install -y certbot python3-certbot-nginx
+    error "Certbot no está instalado. Ejecuta primero vps-setup-simple.sh"
 fi
 
 # 3. Crear configuración de Nginx para el dominio
