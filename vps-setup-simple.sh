@@ -44,7 +44,7 @@ yum update -y
 
 # 2. Instalar dependencias básicas
 log "Instalando dependencias básicas..."
-yum install -y curl wget git unzip epel-release
+yum install -y curl wget git unzip
 
 # 3. Instalar Node.js 18
 log "Instalando Node.js 18..."
