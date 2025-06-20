@@ -212,6 +212,7 @@ EOF
 log "Instalando Certbot via Snap..."
 yum install -y snapd
 systemctl enable --now snapd.socket
+sleep 15
 ln -s /var/lib/snapd/snap /snap
 snap install core
 snap refresh core
