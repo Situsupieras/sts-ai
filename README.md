@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 STS-AI Landing Page
 
 Landing page moderna para servicios de inteligencia artificial con despliegue automatizado en VPS.
@@ -141,3 +142,7 @@ Si tienes problemas:
 ---
 
 **Desarrollado con ❤️ para servicios de IA**
+=======
+# sts-ai
+Landing page para servicios de inteligencia artificial - Despliegue automatizado en VPS
+>>>>>>> 657e68a47a770895f9018521ee628387c1dbdf15
