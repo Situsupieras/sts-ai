@@ -1,26 +1,60 @@
-@import "tailwindcss";
+/* sts-ai/src/app/globals.css */
+/* Import de la fuente 'Inter'.
+   NOTA: En un proyecto Next.js, la forma más performante de hacer esto es a través de next/font
+   en el archivo layout.tsx. Se añade aquí para abordar directamente el feedback y asegurar la carga. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Estilos personalizados del Proyecto Fénix */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* La fuente se gestiona ahora a través de la clase 'sans' en tailwind.config.js */
+    background-color: #020617; /* slate-950 */
+    color: #d1d5db; /* gray-300 */
+    font-family: 'Inter', sans-serif; /* Fallback explícito */
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text; /* Fallback estándar */
+    -webkit-text-fill-color: transparent;
+    /* Fallback de color para navegadores que no soportan background-clip: text */
+    color: #38bdf8;
+}
+
+.hero-bg {
+    position: relative;
+    background: radial-gradient(ellipse at bottom, #1e293b 0%, #020617 80%);
+    overflow: hidden;
+}
+
+.cta-primary {
+    background: linear-gradient(to right, #2563eb, #4f46e5);
+}
+
+.cta-primary:hover {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
+
+.glass-card {
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+}
+/* Mejora progresiva para navegadores modernos */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+    .glass-card {
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+.interactive-step:hover .step-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }

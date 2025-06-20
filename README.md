@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 STS-AI Landing Page
 
-## Getting Started
+Landing page moderna para servicios de inteligencia artificial con despliegue automatizado en VPS.
 
-First, run the development server:
+## ✨ Características
 
+- 🎨 **Diseño Moderno** - Interfaz limpia y profesional
+- 📱 **Responsive** - Optimizado para móviles y desktop
+- ⚡ **Rendimiento** - Construido con Next.js 14 y Tailwind CSS
+- 🔧 **Despliegue Automatizado** - Scripts para VPS sin Docker
+- 🛡️ **Seguridad** - Headers de seguridad y SSL automático
+- 📊 **Monitoreo** - Logs y monitoreo integrado
+
+## 🛠️ Tecnologías
+
+- **Frontend:** Next.js 14, React 18, TypeScript
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Deployment:** Node.js, PM2, Nginx
+- **Infrastructure:** Alibaba Cloud Linux
+
+## 🚀 Despliegue Rápido
+
+### Requisitos
+- VPS con Alibaba Cloud Linux 3.2104 LTS
+- Acceso SSH con key pair
+
+### Instalación
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 1. Conectar al VPS
+ssh -i tu-key.pem root@TU-IP-VPS
+
+# 2. Configurar el servidor
+wget https://raw.githubusercontent.com/TU-USUARIO/sts-ai/main/vps-setup-simple.sh
+chmod +x vps-setup-simple.sh
+./vps-setup-simple.sh
+
+# 3. Clonar y desplegar
+cd /var/www
+git clone https://github.com/TU-USUARIO/sts-ai.git sts-ai
+cd sts-ai
+chmod +x deploy-simple.sh
+./deploy-simple.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Acceso
+- **HTTP:** `http://TU-IP-VPS`
+- **HTTPS:** `https://tu-dominio.com` (después de configurar SSL)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estructura del Proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+sts-ai/
+├── src/
+│   ├── app/              # Next.js App Router
+│   ├── components/       # Componentes React
+│   └── lib/             # Utilidades
+├── public/              # Archivos estáticos
+├── vps-setup-simple.sh  # Configuración del VPS
+├── deploy-simple.sh     # Script de despliegue
+└── README-SIMPLE.md     # Guía de despliegue
+```
 
-## Learn More
+## 🔧 Desarrollo Local
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Instalar dependencias
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Ejecutar en desarrollo
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Construir para producción
+npm run build
 
-## Deploy on Vercel
+# Ejecutar en producción
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 Monitoreo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Estado de la aplicación
+pm2 list
+
+# Logs en tiempo real
+pm2 logs sts-ai -f
+
+# Monitoreo completo
+/usr/local/bin/monitor-sts-ai.sh
+```
+
+## 🔄 Actualizaciones
+
+```bash
+# Actualización manual
+cd /var/www/sts-ai
+git pull
+./deploy-simple.sh
+
+# Actualización automática (cron)
+0 2 * * * cd /var/www/sts-ai && git pull && ./deploy-simple.sh
+```
+
+## 🛡️ Seguridad
+
+- ✅ Firewall configurado (puertos 22, 80, 443)
+- ✅ Headers de seguridad en Nginx
+- ✅ Usuario no-root para la aplicación
+- ✅ SSL automático con Let's Encrypt
+- ✅ Logs rotados automáticamente
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📞 Soporte
+
+Si tienes problemas:
+
+1. Revisa los logs: `pm2 logs sts-ai`
+2. Verifica el estado: `/usr/local/bin/monitor-sts-ai.sh`
+3. Consulta la guía: [README-SIMPLE.md](README-SIMPLE.md)
+
+## 🌟 Características Destacadas
+
+- **Despliegue Simplificado** - Sin Docker, instalación directa
+- **Alto Rendimiento** - Optimizado para velocidad
+- **Fácil Mantenimiento** - Scripts automatizados
+- **Escalable** - Preparado para crecimiento
+- **Profesional** - Diseño moderno y funcional
+
+---
+
+**Desarrollado con ❤️ para servicios de IA**

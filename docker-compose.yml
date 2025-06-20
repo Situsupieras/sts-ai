@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sts-ai:
+    build: .
+    container_name: sts-ai-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - sts-ai-network
+
+networks:
+  sts-ai-network:
+    driver: bridge 
