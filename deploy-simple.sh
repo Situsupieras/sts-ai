@@ -63,12 +63,9 @@ npm install
 log "Construyendo la aplicación..."
 npm run build
 
-# Iniciar con PM2
-log "Iniciando aplicación con PM2..."
-pm2 start npm --name "sts-ai" -- start
-
-# Configurar PM2 para iniciar automáticamente
-pm2 startup
+# Iniciar con PM2 en modo standalone
+log "Iniciando aplicación con PM2 en modo standalone..."
+pm2 start "node .next/standalone/server.js" --name "sts-ai" --env HOST=0.0.0.0
 pm2 save
 
 # Esperar a que el servicio esté listo
@@ -78,7 +75,7 @@ sleep 5
 # Verificar que la aplicación esté ejecutándose
 if pm2 list | grep -q "sts-ai.*online"; then
     log "✅ Despliegue completado exitosamente!"
-    log "🌐 La aplicación está disponible en: http://172.19.182.80"
+    log "🌐 La aplicación está disponible en: https://stselpoderdelaia.online"
     
     # Mostrar información de PM2
     log "📋 Estado de PM2:"
